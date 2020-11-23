@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'components/form.dart';
+import 'components/creditCard/creditCard.dart';
+import 'package:provider/provider.dart';
+import 'dart:developer' as developer;
 
 void main() {
   runApp(MyApp());
@@ -39,32 +42,74 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // int _counter = 0;
-
-  // void _incrementCounter() {
-  //   setState(() {
-  //     // This call to setState tells the Flutter framework that something has
-  //     // changed in this State, which causes it to rerun the build method below
-  //     // so that the display can reflect the updated values. If we changed
-  //     // _counter without calling setState(), then the build method would not be
-  //     // called again, and so nothing would appear to happen.
-  //     _counter++;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
-    return Scaffold(
-      body: Container(
-        margin: MediaQuery.of(context).padding,
-        color: Colors.blueGrey[50],
-        child: Card(
-          margin: EdgeInsets.all(16),
-          child: MyForm(),
+    return ChangeNotifierProvider<Data>(
+      create: (context) => new Data(),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            margin: MediaQuery.of(context).padding,
+            height: MediaQuery.of(context).size.height,
+            color: Colors.blueGrey[50],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(16),
+                  child: CreditCard(),
+                ),
+                Card(
+                  margin: EdgeInsets.all(16),
+                  child: MyForm(),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
+  }
+}
+
+class Data extends ChangeNotifier {
+  String cardName = "",
+      cardNumber = "",
+      expirationMonth = "",
+      expirationYear = "",
+      cvv = "";
+  bool showBack = false;
+
+  void updateCardName(String input) {
+    cardName = input;
+    notifyListeners();
+  }
+
+  void updateCardNumber(String input) {
+    cardNumber = input;
+    notifyListeners();
+  }
+
+  void updateExpirationMonth(String input) {
+    expirationMonth = input;
+    notifyListeners();
+  }
+
+  void updateExpirationYear(String input) {
+    expirationYear = input;
+    notifyListeners();
+  }
+
+  void updateCVV(String input) {
+    cvv = input;
+    notifyListeners();
+  }
+
+  void updateShowBack(bool input) {
+    showBack = input;
+    notifyListeners();
   }
 }
