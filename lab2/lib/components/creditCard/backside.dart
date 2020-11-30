@@ -78,9 +78,12 @@ class BackState extends State<Back> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Image.asset(
-                      'assets/images/visa.png',
-                      scale: 2.4,
+                    Container(
+                      width: 120,
+                      child: Image.asset(
+                        Provider.of<Data>(context).imageSrc,
+                        height: 50,
+                      ),
                     ),
                   ],
                 ),

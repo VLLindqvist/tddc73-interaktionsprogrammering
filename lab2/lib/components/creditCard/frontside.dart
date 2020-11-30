@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
 
@@ -11,20 +10,6 @@ class Front extends StatefulWidget {
 }
 
 class FrontState extends State<Front> {
-  // final formKey = new GlobalKey<FormState>();
-
-  // @override
-  // void initState() {
-  //   // super.initState();
-  //   // _cardNumberController.addListener(_onCardNumberChange);
-  // }
-
-  // @override
-  // void dispose() {
-  //   // _cardNumberController.dispose();
-  //   // super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> transFormText(String cardNumber) {
@@ -141,9 +126,12 @@ class FrontState extends State<Front> {
                 'assets/images/chip.png',
                 scale: 1.9,
               ),
-              Image.asset(
-                'assets/images/visa.png',
-                scale: 2.4,
+              Container(
+                width: 120,
+                child: Image.asset(
+                  Provider.of<Data>(context).imageSrc,
+                  height: 50,
+                ),
               ),
             ],
           ),

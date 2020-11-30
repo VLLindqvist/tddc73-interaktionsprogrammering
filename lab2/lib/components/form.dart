@@ -97,7 +97,6 @@ class _MyForm extends State<MyForm> {
           value: value,
           child: Container(
             child: (Text(value)),
-            width: 50,
           ),
         );
       }).toList(),
@@ -120,7 +119,6 @@ class _MyForm extends State<MyForm> {
           value: value,
           child: Container(
             child: (Text(value)),
-            width: 50,
           ),
         );
       }).toList(),

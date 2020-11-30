@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'components/form.dart';
 import 'components/creditCard/creditCard.dart';
 import 'package:provider/provider.dart';
@@ -12,8 +13,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
+
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Lab 2',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -48,25 +54,27 @@ class _MyHomePageState extends State<MyHomePage> {
     // by the _incrementCounter method above.
     return ChangeNotifierProvider<Data>(
       create: (context) => new Data(),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            margin: MediaQuery.of(context).padding,
-            height: MediaQuery.of(context).size.height,
-            color: Colors.blueGrey[50],
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(16),
-                  child: CreditCard(),
-                ),
-                Card(
-                  margin: EdgeInsets.all(16),
-                  child: MyForm(),
-                ),
-              ],
+      child: Container(
+        color: Colors.blueGrey[50],
+        child: Scaffold(
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Container(
+              margin: EdgeInsets.only(top: 30.0),
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(16),
+                    child: CreditCard(),
+                  ),
+                  Card(
+                    margin: EdgeInsets.all(16),
+                    child: MyForm(),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -80,7 +88,8 @@ class Data extends ChangeNotifier {
       cardNumber = "",
       expirationMonth = "",
       expirationYear = "",
-      cvv = "";
+      cvv = "",
+      imageSrc = "assets/images/visa.png";
   bool showBack = false;
 
   void updateCardName(String input) {
@@ -90,6 +99,7 @@ class Data extends ChangeNotifier {
 
   void updateCardNumber(String input) {
     cardNumber = input;
+    updateImageSrc();
     notifyListeners();
   }
 
@@ -111,5 +121,31 @@ class Data extends ChangeNotifier {
   void updateShowBack(bool input) {
     showBack = input;
     notifyListeners();
+  }
+
+  void updateImageSrc() {
+    if (cardNumber.length > 0) {
+      final firstNumber = cardNumber[0];
+
+      if (firstNumber == "4") {
+        imageSrc = "assets/images/visa.png";
+      } else if (firstNumber == "5") {
+        imageSrc = 'assets/images/mastercard.png';
+      } else if (firstNumber == "6") {
+        imageSrc = 'assets/images/discover.png';
+      } else if (firstNumber == "3") {
+        if (cardNumber.length > 1) {
+          final secondNumber = cardNumber[1];
+
+          if (secondNumber == "4" || secondNumber == "7") {
+            imageSrc = 'assets/images/amex.png';
+          } else if (secondNumber == "0" ||
+              secondNumber == "6" ||
+              secondNumber == "8") {
+            imageSrc = 'assets/images/dinersclub.png';
+          }
+        }
+      }
+    }
   }
 }
