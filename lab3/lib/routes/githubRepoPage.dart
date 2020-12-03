@@ -374,13 +374,6 @@ class _MoreRepoInfoState extends State<MoreRepoInfo> {
             margin: EdgeInsets.only(top: 20.0),
             child: Column(
               children: <Widget>[
-                // Icon(
-                //   Icons.gavel,
-                //   color: Colors.white,
-                //   size: 15.0,
-                //   semanticLabel:
-                //       'Text to announce in accessibility modes',
-                // ),
                 Row(
                   children: <Widget>[
                     Container(

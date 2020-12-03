@@ -87,8 +87,7 @@ class GithubRepoListItem extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              CupertinoPageRoute(
-                  builder: (context) => GithubRepoPage(repoInfo: repoInfo)),
+              MaterialPageRoute(builder: (context) => GithubRepoPage(repoInfo: repoInfo))
             );
           },
           onLongPress: () {},

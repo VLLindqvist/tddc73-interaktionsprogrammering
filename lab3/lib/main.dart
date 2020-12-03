@@ -46,30 +46,27 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
     ));
 
-    return ChangeNotifierProvider<Data>(
-      create: (context) => new Data(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Lab 3',
-        theme: ThemeData(
-          platform: TargetPlatform.iOS,
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          }),
-          scaffoldBackgroundColor: Colors.black,
-          primarySwatch: Colors.amber,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: 'FiraSans',
-          textTheme: TextTheme(
-            bodyText1: TextStyle(),
-            bodyText2: TextStyle(),
-          ).apply(
-            bodyColor: Colors.white,
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Lab 3',
+      theme: ThemeData(
+        platform: TargetPlatform.iOS,
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        }),
+        scaffoldBackgroundColor: Colors.black,
+        primarySwatch: Colors.amber,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'FiraSans',
+        textTheme: TextTheme(
+          bodyText1: TextStyle(),
+          bodyText2: TextStyle(),
+        ).apply(
+          bodyColor: Colors.white,
         ),
-        home: MyHomePage(title: 'Lab 3'),
       ),
+      home: MyHomePage(title: 'Lab 3'),
     );
   }
 }
@@ -166,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 semanticLabel: 'Github icon',
               ),
               Text(
-                "Made using Github REST and GraphQL API.",
+                "Made using Github GraphQL API.",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -316,5 +313,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-class Data extends ChangeNotifier {}
