@@ -83,12 +83,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   String _searchQuery = 'stars:>100 sort:stars';
+  String _language = 'All';
   int nRepositories = 10;
 
-  void changeQuery(String query) {
+  void changeQuery(String language) {
     setState(() {
-      print(query);
-      _searchQuery = query ?? 'stars:>100 sort:stars';
+      _language = language;
+      _searchQuery = language != "All"
+          ? 'stars:>100 sort:stars language:$language'
+          : 'stars:>100 sort:stars';
     });
   }
 
@@ -169,6 +172,49 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.w300,
                   color: Colors.white,
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Language: '),
+                  VerticalDivider(width: 10.0,),
+                  DropdownButton<String>(
+                    value: _language,
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.white,
+                    ),
+                    iconSize: 24,
+                    elevation: 1,
+                    style: TextStyle(color: Colors.white),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.white,
+                    ),
+                    dropdownColor: Colors.black,
+                    onChanged: (String newValue) {
+                      changeQuery(newValue);
+                    },
+                    items: <String>[
+                      'All',
+                      'JavaScript',
+                      'Python',
+                      'Java',
+                      'TypeScript',
+                      'C#',
+                      'PHP',
+                      'C++',
+                      'C',
+                      'Shell',
+                      'Ruby'
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ],
               ),
             ],
           ),

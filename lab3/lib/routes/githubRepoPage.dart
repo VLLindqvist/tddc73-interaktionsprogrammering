@@ -173,6 +173,13 @@ class _MoreRepoInfoState extends State<MoreRepoInfo> {
               }
             }
           }
+          object(expression:"master") {
+            ... on Commit {
+              history {
+                totalCount
+              }
+            }
+          }
         }
       }
     ''';
@@ -374,36 +381,73 @@ class _MoreRepoInfoState extends State<MoreRepoInfo> {
             margin: EdgeInsets.only(top: 20.0),
             child: Column(
               children: <Widget>[
-                Row(
+                Column(
                   children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(right: 10.0),
-                            child: Icon(
-                              Icons.storage,
-                              size: 15.0,
-                              semanticLabel: 'storage icon',
-                              color: Colors.white70,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              'This repository is currently using ' +
-                                  formatBytes(
-                                      moreRepoInfo['diskUsage'] * 1000) +
-                                  ' of storage space.',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white70,
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: 10.0),
+                                child: Icon(
+                                  Octicons.git_commit,
+                                  size: 15.0,
+                                  semanticLabel: 'commit icon',
+                                  color: Colors.white70,
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                child: Text(
+                                  'This repository has ' +
+                                      numberDisplay(forks['totalCount']) +
+                                      ' commits.',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
+                    ),
+                    Divider(height: 10.0,),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: 10.0),
+                                child: Icon(
+                                  Icons.storage,
+                                  size: 15.0,
+                                  semanticLabel: 'storage icon',
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'This repository is currently using ' +
+                                      formatBytes(
+                                          moreRepoInfo['diskUsage'] * 1000) +
+                                      ' of storage space.',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
