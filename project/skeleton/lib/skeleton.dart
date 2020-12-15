@@ -40,10 +40,12 @@ class Skeleton extends StatelessWidget {
             ),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 150),
-          child: placeholder != null ? placeholder : SkeletonPlaceholder(),
-          secondChild: child,
-          crossFadeState:
-              loading ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(child: child, opacity: animation);
+          },
+          child: loading
+              ? (placeholder != null ? placeholder : SkeletonPlaceholder())
+              : child,
         ));
   }
 }

@@ -95,7 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(10.0),
           child: Column(
             children: <Widget>[
-              Skeleton(loading: false, child: Text('M')),
               Skeleton(
                 loading: true,
                 child: Container(),
@@ -151,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
 
                   return Skeleton(
-                    loading: false,
+                    loading: result.loading,
                     child: content,
                     placeholder: SkeletonPlaceholder(
                       child: Column(
