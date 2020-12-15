@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - progress_plugin (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - progress_plugin (from `.symlinks/plugins/progress_plugin/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  progress_plugin:
+    :path: ".symlinks/plugins/progress_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  progress_plugin: cffef48ae986006d4a268248d8fa96e72b658a0e
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
