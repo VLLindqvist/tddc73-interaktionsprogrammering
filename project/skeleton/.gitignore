@@ -32,6 +32,10 @@
 .pub/
 build/
 
+*/.env
+*.env
+.env*
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
