@@ -90,7 +90,7 @@ class Data extends ChangeNotifier {
       expirationYear = "",
       cvv = "",
       imageSrc = "assets/images/visa.png";
-  bool showBack = false;
+  bool showBack = false, isAmex = false;
 
   void updateCardName(String input) {
     cardName = input;
@@ -126,6 +126,7 @@ class Data extends ChangeNotifier {
   void updateImageSrc() {
     if (cardNumber.length > 0) {
       final firstNumber = cardNumber[0];
+      isAmex = false;
 
       if (firstNumber == "4") {
         imageSrc = "assets/images/visa.png";
@@ -139,6 +140,7 @@ class Data extends ChangeNotifier {
 
           if (secondNumber == "4" || secondNumber == "7") {
             imageSrc = 'assets/images/amex.png';
+            isAmex = true;
           } else if (secondNumber == "0" ||
               secondNumber == "6" ||
               secondNumber == "8") {

@@ -133,6 +133,12 @@ class _MyForm extends State<MyForm> {
         border: OutlineInputBorder(),
         labelText: 'CVV',
       ),
+      onChanged: (String newValue) {
+        if (!Provider.of<Data>(context, listen: false).isAmex &&
+            newValue.length > 3) {
+          _cvvController.updateText(newValue.substring(0, 3));
+        }
+      },
     );
 
     final submitButton = ElevatedButton(

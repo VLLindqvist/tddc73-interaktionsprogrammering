@@ -190,8 +190,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         theme: SkeletonTheme.Dark,
                         loading: _loading,
                         placeholder: SkeletonPlaceholder(
-                          title: false,
+                          title: true,
                           avatar: true,
+                          // child: SkeletonParagraph(
+                          //   rows: 10,
+                          // )
                         ),
                         child: LayoutBuilder(builder: (context, constraints) {
                           final width = constraints.maxWidth;
