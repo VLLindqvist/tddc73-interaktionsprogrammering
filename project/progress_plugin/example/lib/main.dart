@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:progress_plugin/progress_modal.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -46,7 +45,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: ProgressModal(
-            labelText: Text("...Loading"),
+            labelText: Text / ("Loasding..."),
           ),
         ),
       ),

@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Skeleton(
                 loading: true,
+                placeholder: SkeletonPlaceholder(),
                 child: Container(),
               ),
               Divider(height: 20.0),
@@ -190,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         theme: SkeletonTheme.Dark,
                         loading: _loading,
                         placeholder: SkeletonPlaceholder(
-                          title: true,
+                          title: false,
                           avatar: true,
                           // child: SkeletonParagraph(
                           //   rows: 10,

@@ -1,6 +1,12 @@
-# example
+# Skeleton example
 
-A new Flutter project.
+In order to run this example you need to create a file named ".env" in "example/", whith the content:
+
+```
+GITHUB_TOKEN=<your personal access token from GitHub>
+```
+
+To generate a personal access token, visit [https://github.com/settings/tokens](https://github.com/settings/tokens "Personal Access Tokens")
 
 ## Getting Started
 

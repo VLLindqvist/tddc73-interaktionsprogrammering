@@ -34,18 +34,19 @@ class Skeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => SkeletonContext(
-              theme: theme,
-              animate: animate,
-            ),
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 150),
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(child: child, opacity: animation);
-          },
-          child: loading
-              ? (placeholder != null ? placeholder : SkeletonPlaceholder())
-              : child,
-        ));
+      create: (context) => SkeletonContext(
+        theme: theme,
+        animate: animate,
+      ),
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 150),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(child: child, opacity: animation);
+        },
+        child: loading
+            ? (placeholder != null ? placeholder : SkeletonPlaceholder())
+            : child,
+      ),
+    );
   }
 }
