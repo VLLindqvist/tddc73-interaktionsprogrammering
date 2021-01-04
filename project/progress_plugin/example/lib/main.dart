@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: ProgressModal(
-            labelText: Text / ("Loasding..."),
+            labelText: Text("Loading..."),
           ),
         ),
       ),
