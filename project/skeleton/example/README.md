@@ -1,6 +1,6 @@
 # Skeleton example
 
-In order to run this example you need to create a file named ".env" in "example/", whith the content:
+In order to run this example you need to create a file named ".env" in this folder (i.e. "tddc73-interaktionsprogrammering/project/skeleton/example/"), with the content:
 
 ```
 GITHUB_TOKEN=<your personal access token from GitHub>
